@@ -1,282 +1,149 @@
 
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Github, Mail, Globe, Twitter } from "lucide-react";
+import { useEffect, useState } from 'react';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import { Linkedin } from 'lucide-react';
 
-interface TeamMemberProps {
+// Team member type
+interface TeamMember {
+  id: number;
   name: string;
   role: string;
   bio: string;
-  imageSrc?: string;
-  socials?: {
-    email?: string;
-    twitter?: string;
-    github?: string;
-    website?: string;
-  };
+  imageSrc: string;
+  linkedin?: string;
 }
 
-const TeamMember = ({ name, role, bio, imageSrc, socials }: TeamMemberProps) => {
-  const initials = name
-    .split(" ")
-    .map((part) => part[0])
-    .join("");
-
-  return (
-    <Card className="research-card overflow-hidden">
-      <CardContent className="p-0">
-        <div className="p-6">
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-4">
-            <Avatar className="h-20 w-20">
-              <AvatarImage src={imageSrc} alt={name} />
-              <AvatarFallback className="bg-research text-white text-xl">
-                {initials}
-              </AvatarFallback>
-            </Avatar>
-            <div>
-              <h3 className="text-xl font-semibold">{name}</h3>
-              <p className="text-gray-600 mb-2">{role}</p>
-              {socials && (
-                <div className="flex space-x-3">
-                  {socials.email && (
-                    <a 
-                      href={`mailto:${socials.email}`} 
-                      aria-label={`Email ${name}`}
-                      className="text-gray-500 hover:text-research"
-                    >
-                      <Mail size={18} />
-                    </a>
-                  )}
-                  {socials.twitter && (
-                    <a 
-                      href={socials.twitter} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      aria-label={`${name}'s Twitter`}
-                      className="text-gray-500 hover:text-research"
-                    >
-                      <Twitter size={18} />
-                    </a>
-                  )}
-                  {socials.github && (
-                    <a 
-                      href={socials.github} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      aria-label={`${name}'s GitHub`}
-                      className="text-gray-500 hover:text-research"
-                    >
-                      <Github size={18} />
-                    </a>
-                  )}
-                  {socials.website && (
-                    <a 
-                      href={socials.website} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      aria-label={`${name}'s Website`}
-                      className="text-gray-500 hover:text-research"
-                    >
-                      <Globe size={18} />
-                    </a>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
-          <p className="text-gray-600">{bio}</p>
-        </div>
-      </CardContent>
-    </Card>
-  );
-};
+// Sample team data
+const teamMembers: TeamMember[] = [
+  {
+    id: 1,
+    name: "Dr. Simeone Marino",
+    role: "Co-Founder & CTO",
+    bio: "Dr. Marino leads our technology initiatives, focusing on developing innovative algorithms for synthetic data generation and privacy-preserving techniques. He co-founded GrayRain in 2022 at the University of Michigan.",
+    imageSrc: "https://raw.githubusercontent.com/SOCR/gray-rain/refs/heads/main/public/Simeone-Screenshot.png",
+    linkedin: "https://www.linkedin.com/company/34612225/",
+  },
+  {
+    id: 2,
+    name: "Dr. Ivo Dinov",
+    role: "C0-Founder",
+    bio: "Dr. Dinov is a specialist in healthcare data analytics with over 15 years of experience in the field. He co-founded GrayRain in 2022 at the University of Michigan.",
+    imageSrc: "https://raw.githubusercontent.com/SOCR/gray-rain/refs/heads/main/public/Ivo-Screenshot.png",
+    linkedin: "https://www.linkedin.com/company/34612225/",
+  },
+  {
+    id: 3,
+    name: "Dr. Johnny Liu",
+    role: "CO-Founder",
+    bio: "Dr. Liu co-founded GrayRain in 2022 at the University of Michigan.",
+    imageSrc: "https://raw.githubusercontent.com/SOCR/gray-rain/refs/heads/main/public/Johnny-Screenshot.png",
+    linkedin: "https://www.linkedin.com/company/34612225/",
+  },
+  {
+    id: 4,
+    name: "Dr. Ronak Shetty",
+    role: "Co-Founder and CEO",
+    bio: "Dr. Shetty co-founded GrayRain in 2022 at the University of Michigan.",
+    imageSrc: "https://raw.githubusercontent.com/SOCR/gray-rain/refs/heads/main/public/Ronak-Screenshot.png",
+    linkedin: "https://www.linkedin.com/company/34612225/",
+  },
+];
 
 const Team = () => {
+  const [loadedImages, setLoadedImages] = useState<number[]>([]);
+
+  useEffect(() => {
+    // Scroll to top on page load
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleImageLoaded = (id: number) => {
+    setLoadedImages(prev => [...prev, id]);
+  };
+
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="bg-research py-16">
-        <div className="container-content text-center">
-          <h1 className="text-white mb-4">Our Team</h1>
-          <p className="text-white/80 max-w-3xl mx-auto text-lg">
-            Meet the dedicated researchers and scientists working on the GRAY-RAIN initiative
-          </p>
-        </div>
-      </section>
-
-      {/* Team Overview */}
-      <section className="section-padding bg-white">
-        <div className="container-content">
-          <div className="mb-12 max-w-3xl">
-            <h2 className="mb-4">Research Team</h2>
-            <p className="text-gray-600">
-              Our team brings together experts from various disciplines including neuroscience, 
-              statistics, computer science, and medical imaging. This interdisciplinary approach 
-              allows us to tackle complex problems in gray matter research from multiple perspectives.
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      
+      <main>
+        {/* Hero Section */}
+        <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-b from-gray-50 to-white">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 animate-slide-up">
+              Our Team
+            </h1>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8 animate-slide-up" style={{animationDelay: '200ms'}}>
+              Meet the dedicated professionals behind GrayRain's innovative healthcare data solutions.
             </p>
+            <div className="w-20 h-1 bg-blue-600 mx-auto animate-slide-up" style={{animationDelay: '400ms'}}></div>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <TeamMember
-              name="Dr. Jane Smith"
-              role="Principal Investigator"
-              bio="Dr. Smith leads the GRAY-RAIN initiative, bringing over 15 years of experience in neuroimaging and statistical methodology. Her research focuses on developing novel approaches to analyze gray matter structures in the human brain."
-              imageSrc="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80"
-              socials={{
-                email: "jane.smith@example.org",
-                twitter: "https://twitter.com",
-                github: "https://github.com",
-                website: "https://example.org"
-              }}
-            />
-            
-            <TeamMember
-              name="Dr. Robert Johnson"
-              role="Statistical Methodologist"
-              bio="Dr. Johnson specializes in advanced statistical methods for neuroimaging data analysis. His current work focuses on developing Bayesian models for characterizing gray matter changes over time and across populations."
-              imageSrc="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80"
-              socials={{
-                email: "robert.johnson@example.org",
-                github: "https://github.com",
-                website: "https://example.org"
-              }}
-            />
-
-            <TeamMember
-              name="Dr. Karen Williams"
-              role="Neuroimaging Specialist"
-              bio="Dr. Williams is an expert in advanced neuroimaging techniques. Her research focuses on developing and optimizing imaging protocols specifically for detailed visualization and analysis of gray matter structures."
-              imageSrc="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80"
-              socials={{
-                email: "karen.williams@example.org",
-                twitter: "https://twitter.com",
-                website: "https://example.org"
-              }}
-            />
-
-            <TeamMember
-              name="Dr. Peter Parker"
-              role="Data Science Lead"
-              bio="Dr. Parker specializes in applying machine learning and AI techniques to neuroimaging data. He leads the development of computational approaches for automatic detection and characterization of gray matter features."
-              imageSrc="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80"
-              socials={{
-                email: "peter.parker@example.org",
-                github: "https://github.com",
-                website: "https://example.org"
-              }}
-            />
+        </section>
+        
+        {/* Team Members Section */}
+        <section className="py-16 md:py-24">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {teamMembers.map((member, index) => (
+                <div 
+                  key={member.id}
+                  className="glass-card rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl animate-slide-up"
+                  style={{animationDelay: `${index * 100 + 200}ms`}}
+                >
+                  <div className="relative h-72 overflow-hidden">
+                    <img 
+                      src={member.imageSrc} 
+                      alt={member.name}
+                      className={`w-full h-full object-cover transition-all duration-1000 ${
+                        loadedImages.includes(member.id) ? 'img-loaded filter-none' : 'img-loading filter blur-sm'
+                      }`}
+                      onLoad={() => handleImageLoaded(member.id)}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                      {member.linkedin && (
+                        <a 
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white hover:text-blue-200 transition-colors"
+                          aria-label={`LinkedIn profile of ${member.name}`}
+                        >
+                          <Linkedin className="h-6 w-6" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
+                    <p className="text-blue-600 font-medium text-sm mb-4">{member.role}</p>
+                    <p className="text-gray-600 text-sm">{member.bio}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-
-          <div className="mb-12">
-            <h2 className="mb-4">Research Associates and Fellows</h2>
-            <p className="text-gray-600 mb-8">
-              Our team includes talented early-career researchers who contribute significantly to our research efforts.
+        </section>
+        
+        {/* Join Us Banner */}
+        <section className="py-16 md:py-24 bg-blue-50">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Join Our Team
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+              Interested in working with us? We're always looking for talented individuals passionate about healthcare data innovation.
             </p>
+            <a 
+              href="/contact" 
+              className="inline-flex items-center rounded-md bg-blue-600 px-6 py-3 text-base font-medium text-white shadow-md hover:bg-blue-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 btn-hover-effect"
+            >
+              Get in Touch
+            </a>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <TeamMember
-              name="Dr. Maria Davis"
-              role="Postdoctoral Fellow"
-              bio="Dr. Davis focuses on multimodal integration of neuroimaging data for comprehensive assessment of gray matter properties."
-              socials={{
-                email: "maria.davis@example.org",
-                github: "https://github.com"
-              }}
-            />
-
-            <TeamMember
-              name="Dr. Sam Chen"
-              role="Research Associate"
-              bio="Dr. Chen specializes in statistical modeling of longitudinal changes in gray matter across different populations."
-              socials={{
-                email: "sam.chen@example.org",
-                twitter: "https://twitter.com"
-              }}
-            />
-
-            <TeamMember
-              name="Dr. Lisa Taylor"
-              role="AI Research Fellow"
-              bio="Dr. Taylor develops deep learning approaches for enhancing gray matter imaging resolution and analysis."
-              socials={{
-                email: "lisa.taylor@example.org",
-                github: "https://github.com"
-              }}
-            />
-
-            <TeamMember
-              name="Dr. Alex Rodriguez"
-              role="Postdoctoral Fellow"
-              bio="Dr. Rodriguez works on cross-disciplinary data integration, combining neuroimaging with genetic and clinical data."
-              socials={{
-                email: "alex.rodriguez@example.org"
-              }}
-            />
-
-            <TeamMember
-              name="Dr. Brian Wilson"
-              role="Research Associate"
-              bio="Dr. Wilson specializes in quantitative imaging methods for objective measurement of gray matter properties."
-              socials={{
-                email: "brian.wilson@example.org",
-                website: "https://example.org"
-              }}
-            />
-
-            <TeamMember
-              name="Dr. Helena Garcia"
-              role="Computational Neuroscientist"
-              bio="Dr. Garcia develops computational models to understand structural and functional relationships in gray matter."
-              socials={{
-                email: "helena.garcia@example.org",
-                github: "https://github.com"
-              }}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Collaborators Section */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-content">
-          <div className="mb-12">
-            <h2 className="mb-4">Collaborating Institutions</h2>
-            <p className="text-gray-600">
-              Our research is strengthened through collaborations with leading institutions worldwide.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="research-card text-center">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-2">University of Example</h3>
-                <p className="text-gray-600">
-                  Department of Neuroscience
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="research-card text-center">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Research Institute of Technology</h3>
-                <p className="text-gray-600">
-                  Advanced Imaging Laboratory
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="research-card text-center">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-2">National Neurological Institute</h3>
-                <p className="text-gray-600">
-                  Division of Brain Research
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+        </section>
+      </main>
+      
+      <Footer />
     </div>
   );
 };
