@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -36,21 +35,11 @@ const Navbar = () => {
             className="flex items-center space-x-2"
             aria-label="GrayRain Logo"
           >
-            <div className="relative w-10 h-10 overflow-hidden">
-              <div className="absolute inset-0 animate-float">
-                <img 
-                  src="/src/assets/logo.svg" 
-                  alt="GrayRain Logo" 
-                  className="w-full h-full object-contain" 
-                  onError={(e) => {
-                    e.currentTarget.src = "https://via.placeholder.com/40?text=GR";
-                  }}
-                />
-              </div>
-            </div>
-            <span className="text-xl font-bold tracking-tight text-gray-900">
-              GrayRain
-            </span>
+            <img 
+              src="/lovable-uploads/514e7c3b-fb30-4c3f-927c-d738bd44539c.png" 
+              alt="GrayRain Logo" 
+              className="h-8 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}

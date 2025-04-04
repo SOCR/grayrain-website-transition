@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { Linkedin } from 'lucide-react';
 
@@ -12,21 +11,11 @@ const Footer = () => {
           {/* Logo & Copyright */}
           <div className="md:col-span-4">
             <Link to="/" className="inline-flex items-center mb-6">
-              <div className="relative w-10 h-10 overflow-hidden mr-3">
-                <div className="absolute inset-0 animate-float">
-                  <img 
-                    src="/src/assets/logo-white.svg" 
-                    alt="GrayRain Logo" 
-                    className="w-full h-full object-contain" 
-                    onError={(e) => {
-                      e.currentTarget.src = "https://via.placeholder.com/40?text=GR";
-                    }}
-                  />
-                </div>
-              </div>
-              <span className="text-xl font-bold tracking-tight">
-                GrayRain
-              </span>
+              <img 
+                src="/lovable-uploads/514e7c3b-fb30-4c3f-927c-d738bd44539c.png" 
+                alt="GrayRain Logo" 
+                className="h-8 w-auto mr-3 brightness-0 invert" 
+              />
             </Link>
             <p className="text-gray-400 mb-6 max-w-md">
               GrayRain designs innovative tools, builds effective AI services and promotes large-scale data-driven health analytics.
