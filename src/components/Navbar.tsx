@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -69,36 +70,81 @@ const Navbar = () => {
                 aria-expanded={isDropdownOpen}
                 aria-haspopup="true"
               >
-                <span>Virtual Hospital</span>
+                <span>Products & Services</span>
                 <ChevronDown className={`ml-1 w-4 h-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
               
               {/* Dropdown Menu */}
               {isDropdownOpen && (
                 <div 
-                  className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50 animate-fade-in"
+                  className="absolute right-0 mt-2 w-72 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50 animate-fade-in"
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="menu-button"
                 >
                   <div className="py-1" role="none">
                     <a
-                      href="https://rcompute.nursing.umich.edu/VH0216/"
+                      href="https://vh.gray-rain.com/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
                       role="menuitem"
                     >
-                      Virtual Hospital - ShinyServer
+                      VH Webapp
                     </a>
                     <a
-                      href="https://grayrain.shinyapps.io/grayrain/"
+                      href="#"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
                       role="menuitem"
                     >
-                      Virtual Hospital - Posit
+                      VH RShiny App
+                    </a>
+                    <a
+                      href="https://dmx.gray-rain.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                      role="menuitem"
+                    >
+                      DMX
+                    </a>
+                    <a
+                      href="https://dhc.gray-rain.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                      role="menuitem"
+                    >
+                      DHC Environment
+                    </a>
+                    <a
+                      href="https://gr-ehr-sim.lovable.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                      role="menuitem"
+                    >
+                      EHR Simulator
+                    </a>
+                    <a
+                      href="https://qi.gray-rain.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                      role="menuitem"
+                    >
+                      QI App
+                    </a>
+                    <a
+                      href="https://sdmh.gray-rain.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                      role="menuitem"
+                    >
+                      Depression & Mental Health App
                     </a>
                   </div>
                 </div>
@@ -158,24 +204,69 @@ const Navbar = () => {
             Contact
           </Link>
           <div className="py-2">
-            <div className="text-base font-medium text-gray-700 mb-2">Virtual Hospital</div>
+            <div className="text-base font-medium text-gray-700 mb-2">Products & Services</div>
             <a
-              href="https://rcompute.nursing.umich.edu/VH0216/"
+              href="https://vh.gray-rain.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="block py-2 pl-4 text-sm text-gray-600 hover:text-blue-600 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Virtual Hospital - ShinyServer
+              VH Webapp
             </a>
             <a
-              href="https://grayrain.shinyapps.io/grayrain/"
+              href="#"
               target="_blank"
               rel="noopener noreferrer"
               className="block py-2 pl-4 text-sm text-gray-600 hover:text-blue-600 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Virtual Hospital - Posit
+              VH RShiny App
+            </a>
+            <a
+              href="https://dmx.gray-rain.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block py-2 pl-4 text-sm text-gray-600 hover:text-blue-600 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              DMX
+            </a>
+            <a
+              href="https://dhc.gray-rain.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block py-2 pl-4 text-sm text-gray-600 hover:text-blue-600 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              DHC Environment
+            </a>
+            <a
+              href="https://gr-ehr-sim.lovable.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block py-2 pl-4 text-sm text-gray-600 hover:text-blue-600 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              EHR Simulator
+            </a>
+            <a
+              href="https://qi.gray-rain.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block py-2 pl-4 text-sm text-gray-600 hover:text-blue-600 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              QI App
+            </a>
+            <a
+              href="https://sdmh.gray-rain.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block py-2 pl-4 text-sm text-gray-600 hover:text-blue-600 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Depression & Mental Health App
             </a>
           </div>
           <div className="pt-4">
