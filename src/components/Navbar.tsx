@@ -146,6 +146,15 @@ const Navbar = () => {
                     >
                       Depression & Mental Health App
                     </a>
+                    <a
+                      href="https://socr-dslo.gray-rain.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                      role="menuitem"
+                    >
+                      Longitudinal Data Obfuscation
+                    </a>
                   </div>
                 </div>
               )}
@@ -267,6 +276,15 @@ const Navbar = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Depression & Mental Health App
+            </a>
+            <a
+              href="https://socr-dslo.gray-rain.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block py-2 pl-4 text-sm text-gray-600 hover:text-blue-600 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Longitudinal Data Obfuscation
             </a>
           </div>
           <div className="pt-4">
