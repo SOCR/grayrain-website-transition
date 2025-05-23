@@ -63,6 +63,12 @@ const Navbar = () => {
             >
               Contact
             </Link>
+            <Link 
+              to="/data-generation" 
+              className="text-gray-700 hover:text-blue-600 transition-colors py-2 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-right after:transition-transform hover:after:scale-x-100 hover:after:origin-left"
+            >
+              Data Generation
+            </Link>
             <div className="relative">
               <button 
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -168,7 +174,6 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-            {/* Fix: Removed the HTML comment from within JSX attributes */}
             <a 
               href="https://vh-authentication.auth.us-east-1.amazoncognito.com/login?client_id=56q33gpcadjk1lk5iv17htnplr&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Frcompute.nursing.umich.edu%2FVH_24%2F"
               target="_blank"
@@ -220,6 +225,13 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(false)}
           >
             Contact
+          </Link>
+          <Link
+            to="/data-generation"
+            className="block py-2 text-base font-medium text-gray-700 hover:text-blue-600 transition-colors"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Data Generation
           </Link>
           <div className="py-2">
             <div className="text-base font-medium text-gray-700 mb-2">Products & Services</div>
