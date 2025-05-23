@@ -93,6 +93,15 @@ const Navbar = () => {
                       VH Webapp
                     </a>
                     <a
+                      href="https://gr-sim-tools.gray-rain.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                      role="menuitem"
+                    >
+                      DataSifter vs. Synthea vs. Gretel
+                    </a>
+                    <a
                       href="#"
                       target="_blank"
                       rel="noopener noreferrer"
