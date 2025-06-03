@@ -129,7 +129,7 @@ const Navbar = () => {
                       DHC Environment
                     </a>
                     <a
-                      href="https://gr-ehr-sim.lovable.app/"
+                      href="https://ehr-sim.statisticalcomputing.org/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
@@ -269,7 +269,7 @@ const Navbar = () => {
               DHC Environment
             </a>
             <a
-              href="https://gr-ehr-sim.lovable.app/"
+              href="https://ehr-sim.statisticalcomputing.org/"
               target="_blank"
               rel="noopener noreferrer"
               className="block py-2 pl-4 text-sm text-gray-600 hover:text-blue-600 transition-colors"
