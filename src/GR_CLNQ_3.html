@@ -2776,7 +2776,7 @@ class EnhancedClinicalIntelligenceEngine {
     async loadKnowledgeBasesRobustly() {
         // HPO Loading with multiple fallback strategies
         try {
-            const hpoResponse = await fetch('assets/hp.json');
+            const hpoResponse = await fetch('/src/assets/hp.json');
             if (hpoResponse.ok) {
                 this.hpoData = await hpoResponse.json();
                 console.log('HPO data loaded successfully');
@@ -2790,7 +2790,7 @@ class EnhancedClinicalIntelligenceEngine {
 
         // Biomedical KB with multiple format support
         try {
-            const kbJsonResponse = await fetch('assets/Biomedical_Knowledgebase.json');
+            const kbJsonResponse = await fetch('/src/assets/Biomedical_Knowledgebase.json');
             if (kbJsonResponse.ok) {
                 this.biomedicalKB = await kbJsonResponse.json();
                 console.log('Biomedical KB loaded from JSON');
